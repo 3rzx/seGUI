@@ -2226,7 +2226,7 @@ Enforcing</property>
                               <property name="type">tab</property>
                            </packing>
                         </child>
-												<child>
+						<child>
                            <widget class="GtkVBox" id="vbox14">
                               <property name="visible">True</property>
                               <property name="homogeneous">False</property>
@@ -2381,6 +2381,53 @@ Enforcing</property>
                            </packing>
                         </child>
 
+                        <!--alert Page-->
+                        <child>
+                           <widget class="GtkVBox" id="vbox213213">
+                              <property name="visible">True</property>
+                              <property name="homogeneous">False</property>
+                              <property name="spacing">0</property>
+                              
+                                <child>
+                                       <widget class="GtkLabel" id="processState">
+                                          <property name="visible">True</property>
+                                          <property name="label" translatable="yes">process dead</property>
+                                       </widget>
+                                       <packing>
+                                          <!-- <property name="left_attach">0</property>
+            <property name="right_attach">0</property>
+            <property name="top_attach">2</property> -->
+                                          <property name="bottom_attach">100</property>
+                                          <!-- <property name="y_options"></property> -->
+                                       </packing>
+                                </child>
+                                <child>
+                                    <widget class="GtkImage" id="processStateImage">
+                                          <property name="visible">True</property>
+                                    </widget>
+                                    <packing>
+                                          <property name="left_attach">0</property>
+                                          <property name="right_attach">5</property>
+                                          <property name="top_attach">10</property>
+                                          <property name="bottom_attach">140</property>
+                                          <property name="y_options">20</property>
+                                    </packing>
+                                </child>
+                                    
+                                
+                           </widget>
+                           <packing>
+                              <property name="tab_expand">False</property>
+                              <property name="tab_fill">True</property>
+                           </packing>
+                        </child>
+
+                        </widget>
+                        <packing>
+                            <property name="shrink">True</property>
+                            <property name="resize">True</property>
+                        </packing>
+                    
 
                         <!--port page-->
                         <child>
@@ -2987,11 +3034,8 @@ Enforcing</property>
                               <property name="tab_fill">True</property>
                            </packing>
                         </child>
-                     </widget>
-                     <packing>
-                        <property name="shrink">True</property>
-                        <property name="resize">True</property>
-                     </packing>
+
+                        
                   </child>
                </widget>
             </child>

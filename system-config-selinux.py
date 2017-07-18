@@ -20,9 +20,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
+import gobject
+import time
 import signal
 import string
+import server
 import sys
+from threading import Thread
 try:
     import gtk
 except RuntimeError as e:
@@ -44,6 +48,7 @@ import domainsPage
 import fcontextPage
 import usbPage
 import selinux
+import alertPage
 ##
 ## I18N
 ##
@@ -102,6 +107,7 @@ class childWindow:
                 #self.add_page(portsPage.portsPage(xml))
                 #self.add_page(modulesPage.modulesPage(xml))  # modules
                 #self.add_page(domainsPage.domainsPage(xml))  # domains
+                self.add_page(alertPage.alertPage(xml))
 		
             except ValueError as e:
                 self.error(e.message)
@@ -198,8 +204,22 @@ class childWindow:
 
         gtk.main()
 
+app = None
 if __name__ == "__main__":
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
+    gobject.threads_init()
 
-    app = childWindow()
-    app.stand_alone()
+    def gui_thread():
+        global app
+        #signal.signal(signal.SIGINT, signal.SIG_DFL)
+
+        app = childWindow()
+        app.stand_alone()
+
+    Thread(target=gui_thread,).start()
+
+    while app == None:
+        time.sleep(1)
+
+
+    Thread(target=server.loop_server_thread, args=(app,)).start()
+
