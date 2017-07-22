@@ -1,7 +1,7 @@
 import socket
 import os
 import time
-pageNum = 5
+pageNum = 9
 def server_thread(app):
         HOST = 'localhost'
         PORT = 9000

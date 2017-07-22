@@ -100,13 +100,13 @@ class childWindow:
         if selinux.is_selinux_enabled() > 0:
             try:
                 self.add_page(booleansPage.booleansPage(xml))
-                #self.add_page(fcontextPage.fcontextPage(xml))
+                self.add_page(fcontextPage.fcontextPage(xml))
                 self.add_page(loginsPage.loginsPage(xml))
                 self.add_page(usersPage.usersPage(xml))
                 self.add_page(usbPage.usbPage(xml))
-                #self.add_page(portsPage.portsPage(xml))
-                #self.add_page(modulesPage.modulesPage(xml))  # modules
-                #self.add_page(domainsPage.domainsPage(xml))  # domains
+                self.add_page(portsPage.portsPage(xml))
+                self.add_page(modulesPage.modulesPage(xml))  # modules
+                self.add_page(domainsPage.domainsPage(xml))  # domains
                 self.add_page(alertPage.alertPage(xml))
 		
             except ValueError as e:

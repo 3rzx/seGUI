@@ -52,7 +52,9 @@ class alertPage:
         self.xml = xml
         self.processStateLabel = xml.get_widget("processState")
         self.image = xml.get_widget("processStateImage")
-                               
+
+    def use_menus(self):
+        return False
 
     def get_description(self):
         return _("Alert page")
