@@ -102,7 +102,8 @@ class childWindow:
                 self.add_page(booleansPage.booleansPage(xml))
                 self.add_page(loginsPage.loginsPage(xml))
                 self.add_page(usersPage.usersPage(xml))
-                self.add_page(usbPage.usbPage(xml))
+                self.add_page(portsPage.portsPage(xml))
+		self.add_page(usbPage.usbPage(xml))
                 self.add_page(alertPage.alertPage(xml))
 		
             except ValueError as e:
