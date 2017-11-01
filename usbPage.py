@@ -97,19 +97,20 @@ class usbPage(semanagePage):
         self.store.clear()
         context = pyudev.Context()
         for device in context.list_devices(subsystem='usb', DEVTYPE='usb_device'):
-            uid = (device.get('ID_VENDOR_ID'), device.get('ID_MODEL_ID'))
-            uName = device.get('ID_VENDOR') + ' ' + device.get('ID_MODEL')
-            location = device.get('DEVNAME')
-            inWhiteList = False
-            if uid in white_list:
-                nWhiteList = True
-            if not (self.match(uName, filt) or self.match(location, filt) or self.match(inWhiteList, filt)):
-                continue
-            it = self.store.append()
-            self.store.set_value(it, 0, uName)
-            self.store.set_value(it, 1, location)
-            self.store.set_value(it, 2, str(inWhiteList))
-            self.store.set_value(it, 3, str(inWhiteList))
+            if device.get('ID_PATH') is None:
+                uid = (device.get('ID_VENDOR_ID'), device.get('ID_MODEL_ID'))
+                uName = device.get('ID_VENDOR') + ' ' + device.get('ID_MODEL')
+                location = device.get('DEVNAME')
+                inWhiteList = False
+                if uid in white_list:
+                    nWhiteList = True
+                if not (self.match(uName, filt) or self.match(location, filt) or self.match(inWhiteList, filt)):
+                    continue
+                it = self.store.append()
+                self.store.set_value(it, 0, uName)
+                self.store.set_value(it, 1, location)
+                self.store.set_value(it, 2, str(inWhiteList))
+                self.store.set_value(it, 3, str(inWhiteList))
         
         self.view.get_selection().select_path((0,))
     

@@ -17,7 +17,7 @@ def server_thread(app):
 
         clientPid = -1
         data = None
-        app.tabs[pageNum].image.set_from_file("dead.png")
+        app.tabs[pageNum].image.set_from_file("./dead.png")
 
         while clientPid == -1:
             conn, addr = s.accept()
@@ -29,7 +29,7 @@ def server_thread(app):
                     if(data.split(' ')[0] == 'pid'):
                         clientPid = data.split(' ')[1]
                         app.tabs[pageNum].processStateLabel.set_label("process alive")
-                        app.tabs[pageNum].image.set_from_file("alive.png")
+                        app.tabs[pageNum].image.set_from_file("./alive.png")
                         break
             conn.close()
                  
