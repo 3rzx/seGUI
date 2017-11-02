@@ -1,13 +1,13 @@
 import socket
 import os
 import time
-pageNum = 5
+pageNum = 6
 def server_thread(app):
         HOST = 'localhost'
         PORT = 9000
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+#        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
         s.bind((HOST, PORT))
         s.listen(5)
@@ -17,7 +17,8 @@ def server_thread(app):
 
         clientPid = -1
         data = None
-        app.tabs[pageNum].image.set_from_file("./dead.png")
+        app.tabs[pageNum].image.set_from_file("dead.png")
+	print "testtesttest"
 
         while clientPid == -1:
             conn, addr = s.accept()
